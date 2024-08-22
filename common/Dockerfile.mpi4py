@@ -3,7 +3,7 @@
 # in all dependency libs - '-Wl,--allow-shlib-undefined' with gcc/GNU linker should
 # be equivalent.   
 #
-ENV MPI4PY_VERSION 3.1.4
+ARG MPI4PY_VERSION
 RUN $WITH_CONDA ; set -eux ; \
   cd / ; \
   curl -LO $CPE_URL ; \
@@ -27,8 +27,9 @@ RUN $WITH_CONDA ; set -eux ; \
   \
   CC=clang CXX=clang++ python setup.py build --mpi=lumi ; \
   CC=clang CXX=clang++ python setup.py bdist_wheel ; \
+  mkdir -p /opt/wheels ; \
   cp dist/mpi4py-*.whl /opt/wheels ; \
-  cd / ; rm -rf /opt/builds ; \
+  cd / ; rm -rf /opt/builds ;\
   $REMOVE_CRAY_DEPS
 
 RUN $WITH_CONDA ; set -eux ; \

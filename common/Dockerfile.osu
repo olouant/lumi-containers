@@ -23,7 +23,7 @@ RUN set -eux ; \
   sed -i 's/$ac_cv_func_MPI_Get_accumulate/yes/g' configure ; \
   \
   CC=$ROCM_PATH/llvm/bin/clang CXX=$ROCM_PATH/llvm/bin/clang++ \
-    CFLAGS="-I$MPICH_PATH/include" \
+    CFLAGS="-I$MPICH_PATH/include -D__HIP_PLATFORM_AMD__=1" \
     ./configure --enable-rocm --with-rocm=$ROCM_PATH --prefix=$OSU_PATH ; \
   make LDFLAGS="-L$MPICH_PATH/../../../gtl/lib -Wl,-rpath=$MPICH_PATH/../../../gtl/lib -L$MPICH_PATH/lib -lmpi_cray -lmpi_gtl_hsa -L$ROCM_PATH/lib  -lamdhip64" -j install ; \
   \

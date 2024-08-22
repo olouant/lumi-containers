@@ -14,33 +14,27 @@ all: alphafold mpi4py pytorch tensorflow rocm jax
 #
 # List all variation for each image here
 #
-alphafold: alphafold/build-rocm-5.5.3-python-3.9-alphafold-69afc4d.done
+alphafold: alphafold/build-rocm-6.2.0-python-3.10-alphafold-f251de6.done
 
-mpi4py: mpi4py/build-rocm-5.4.5-python-3.10-mpi4py-3.1.4.done
+mpi4py: mpi4py/build-rocm-6.2.0-python-3.12-mpi4py-3.1.6.done
 
-
-pytorch_deps := pytorch/build-rocm-5.5.1-python-3.10-pytorch-v2.0.1.done
-pytorch_deps += pytorch/build-rocm-5.5.1-python-3.10-pytorch-v2.0.1-debugsymbols.done
-pytorch_deps += pytorch/build-rocm-5.6.1-python-3.10-pytorch-v2.1.0.done
-pytorch_deps += pytorch/build-rocm-5.6.1-python-3.10-pytorch-v2.2.0.done
-pytorch_deps += pytorch/build-rocm-5.6.1-python-3.10-pytorch-v2.2.2.done
-pytorch_deps += pytorch/build-rocm-5.6.1-python-3.10-pytorch-v2.2.2-vllm-v0.4.0.post1.done
-pytorch_deps += pytorch/build-rocm-5.6.1-python-3.10-pytorch-v2.2.2-rocal-0046624.done
+pytorch_deps := pytorch/build-rocm-5.7.3-python-3.12-pytorch-v2.2.2.done
+pytorch_deps += pytorch/build-rocm-6.0.3-python-3.12-pytorch-v2.3.1.done
+pytorch_deps += pytorch/build-rocm-6.1.3-python-3.12-pytorch-v2.4.0.done
+pytorch_deps += pytorch/build-rocm-6.2.0-python-3.10-pytorch-v2.3.0.done
+pytorch_deps += pytorch/build-rocm-6.2.0-python-3.12-pytorch-20240801-vllm-baaedfd.done
 
 pytorch: $(pytorch_deps)
 
-tensorflow: tensorflow/build-rocm-5.5.1-python-3.10-tensorflow-2.11.1-horovod-0.28.1.done
+tensorflow: tensorflow/build-rocm-6.2.0-python-3.10-tensorflow-2.16.1-horovod-0.28.1.done
 
-rocm_deps := rocm/build-rocm-5.4.5.done
-rocm_deps += rocm/build-rocm-5.4.6.done
-rocm_deps += rocm/build-rocm-5.5.1.done
-rocm_deps += rocm/build-rocm-5.5.3.done
-rocm_deps += rocm/build-rocm-5.6.1.done
-rocm_deps += rocm/build-rocm-5.6.0.done
-rocm_deps += rocm/build-rocm-5.7.1.done
+rocm_deps := rocm/build-rocm-5.7.3.done
+rocm_deps += rocm/build-rocm-6.0.3.done
+rocm_deps += rocm/build-rocm-6.1.3.done
+rocm_deps += rocm/build-rocm-6.2.0.done
 rocm: $(rocm_deps)
 
-jax: jax/build-rocm-5.6.1-python-3.10-jax-0.4.13.done
+jax: jax/build-rocm-6.2.0-python-3.12-jax-0.4.28.done
 
 #
 # Generic recipe 
