@@ -42,6 +42,14 @@ ARG TORCHVISION_VERSION
 RUN $WITH_CONDA; set -eux ; \
   pip3 install --pre torchvision==$TORCHVISION_VERSION --index-url https://download.pytorch.org/whl/
 
+#
+# AMD-SMI
+#
+RUN $WITH_CONDA; set -eux ; \
+  cd $ROCM_PATH/share/amd_smi ; \
+  python3 -m pip wheel . --wheel-dir=/opt/wheels ; \
+  pip install /opt/wheels/amdsmi-*.whl
+
 ARG TORCHDATA_VERSION
 RUN $WITH_CONDA; set -eux ; \
   pip3 install --pre torchdata==$TORCHDATA_VERSION --index-url https://download.pytorch.org/whl/
